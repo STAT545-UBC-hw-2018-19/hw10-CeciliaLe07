@@ -1,0 +1,140 @@
+---
+title: 'Homework 10: Getting data from the Web'
+author: "Cecilia Leon"
+output:
+  github_document:
+      toc: yes 
+always_allow_html: yes
+---
+
+All dependencies neddeed for this assingment:
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(rvest))
+suppressPackageStartupMessages(library(xlsx))
+suppressPackageStartupMessages(library(kableExtra))
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Scrape data
+
+Use the `rvest` package to scrape data from the web to make two data objects.
+
+Requirements:
+
+  - At least one of your data objects should be a data frame that contains at least 2 rows and 2 columns, and this should not be obtained from activities done in class. 
+  
+  - You should do some CSS selection (use html_nodes() or html_node()) in at least one case.
+  
+To select a table about some characteristics of the characters on "The Simpsons" serie, we can use the command `html_table` a take advantage of the information provided by wikipedia. For example:
+
+```{r data scraping 1}
+Simpson_characters <- read_html("https://en.wikipedia.org/wiki/List_of_The_Simpsons_characters") %>% 
+  html_table(fill=TRUE)
+```
+
+After that, we can show only few rows of the obtained object, which also will be loaded in a xlsx file by the following code:
+
+```{r showing data 1}
+#Printing the first 5 entries of the table
+Simpson_characters[[1]] %>% 
+  head(5)
+
+write.xlsx(Simpson_characters[[1]],"Simpson_characters.xlsx")
+```
+
+Furthermore, we can construct a data frame when scraped data is not in table format. For instance, we can construct a table with the summary of the best 5 episodes of simpsons presented at [these web page](https://www.pastemagazine.com/articles/2014/05/the-top-25-simpsons-episodes-of-all-time.html)
+
+
+```{r construct a data frame}
+titles <- read_html("https://www.pastemagazine.com/articles/2014/05/the-top-25-simpsons-episodes-of-all-time.html") %>% 
+  html_nodes(".big") %>% 
+  html_text()
+
+to_search <- paste0("p:nth-child(",c(seq(3,13,by=2),
+                                    seq(16,26,by=2),
+                                    seq(29,41,by=2),
+                                    seq(44,52,by=2),55),")")
+
+description <- read_html("https://www.pastemagazine.com/articles/2014/05/the-top-25-simpsons-episodes-of-all-time.html") %>% 
+  html_nodes(toString(to_search)) %>% 
+  html_text()
+  
+summary_table <- tibble(title=rev(titles),
+                        description=rev(description))
+```
+
+Again, we can show only few rows of the data frame we built, which also will be loaded in a xlsx file by the following code:
+
+```{r showing data 2}
+summary_table %>% 
+  head(5)
+
+write.xlsx(Simpson_characters[[1]],"Simpson_characters.xlsx")
+```
+
+
+Finally, we are going to make two different scraping to obtain "real-time" data. The first one is to obatin the most recent news published by **New York times** regarding three different fields: `world`, `politics` and `business`. To do it I created the following function, which input could be any of the preciuos mentioned fiels, being `world` the default value.
+
+```{r last_news function}
+last_news <- function(field="world"){
+  
+  if(field=="world"){
+    news <- read_html("https://www.nytimes.com/section/world") %>% 
+            html_nodes(".headline a") %>% 
+            html_text()
+  }else{
+    last_url <- paste0("https://www.nytimes.com/section/",field)
+    news <- read_html(last_url) %>% 
+            html_nodes(".e1xfvim30") %>% 
+            html_text()
+  }
+  
+  return(kable(news,col.names = paste0("Last news about ", field, ":")))
+}
+```
+
+To illustrate the usege and output of this function:
+
+```{r using last_news}
+last_news("business")
+```
+
+**Note:** If the css style change in [the New York times page](https://www.nytimes.com) this function could not work properly.
+
+Other example is given bu the following function which provides the current weather of Vancouver at the moment is called, this function doesn't need any parameter to be passed.
+
+
+```{r vancouver_weather function}
+vancouver_weather <- function(){
+  current_temp <- read_html("https://www.accuweather.com/en/ca/vancouver/v6c/hourly-weather-forecast/53286") %>% 
+    html_nodes(".local-temp") %>% 
+    html_text()
+  
+  return(paste("The current temperature at Vancouver is:",current_temp))
+}
+```
+
+To illustrate the usage and output of this function:
+
+```{r using vancouver_weather}
+vancouver_weather()
+```
+
+## Make API queries
+Make two requests for data two make two data objects.
+
+Requirements:
+
+  - At least one of your data objects should be a data frame that contains at least 2 rows and 2 columns, and this should not be obtained from the GitHub API or the OMDb API that we used in class.
+  - Use the httr package to do the retrieval (or even the RCurl package if you’d like).
+  - Don’t use R packages that are specifically designed to wrap a specific API (such as rebird or geonames, as listed in the cm112 notes).
+    + You can use these, but not until you’ve completed the original task.
+    + You can use the API’s associated with these, though.
+
+
+
