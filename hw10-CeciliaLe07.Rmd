@@ -7,13 +7,16 @@ output:
 always_allow_html: yes
 ---
 
-All dependencies neddeed for this assingment:
+All dependencies nedeed for this assignment:
 
 ```{r}
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(rvest))
 suppressPackageStartupMessages(library(xlsx))
 suppressPackageStartupMessages(library(kableExtra))
+suppressPackageStartupMessages(library(jsonlite))
+suppressPackageStartupMessages(library(httr))
+suppressPackageStartupMessages(library(ggplot2))
 ```
 
 ```{r setup, include=FALSE}
@@ -22,32 +25,32 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Scrape data
 
-Use the `rvest` package to scrape data from the web to make two data objects.
+> Use the `rvest` package to scrape data from the web to make two data objects.
 
-Requirements:
+> Requirements:
 
-  - At least one of your data objects should be a data frame that contains at least 2 rows and 2 columns, and this should not be obtained from activities done in class. 
+>  - At least one of your data objects should be a data frame that contains at least 2 rows and 2 columns, and this should not be obtained from activities done in class. 
   
-  - You should do some CSS selection (use html_nodes() or html_node()) in at least one case.
+>  - You should do some CSS selection (use html_nodes() or html_node()) in at least one case.
   
-To select a table about some characteristics of the characters on "The Simpsons" serie, we can use the command `html_table` a take advantage of the information provided by wikipedia. For example:
+To select a table about some characteristics of the characters on "The Simpsons" serie, we can use the command `html_table` a take advantage of the information provided by [wikipedia](https://en.wikipedia.org/wiki/List_of_The_Simpsons_characters). For example:
 
 ```{r data scraping 1}
 Simpson_characters <- read_html("https://en.wikipedia.org/wiki/List_of_The_Simpsons_characters") %>% 
   html_table(fill=TRUE)
 ```
 
-After that, we can show only few rows of the obtained object, which also will be loaded in a xlsx file by the following code:
+After that, we can show only a few rows of the obtained object, which also will be saved in an xlsx file by the following code:
 
 ```{r showing data 1}
 #Printing the first 5 entries of the table
 Simpson_characters[[1]] %>% 
-  head(5)
+  head(3)
 
 write.xlsx(Simpson_characters[[1]],"Simpson_characters.xlsx")
 ```
 
-Furthermore, we can construct a data frame when scraped data is not in table format. For instance, we can construct a table with the summary of the best 5 episodes of simpsons presented at [these web page](https://www.pastemagazine.com/articles/2014/05/the-top-25-simpsons-episodes-of-all-time.html)
+Furthermore, we can construct a data frame when scraped data is not in table format. For instance, we can construct a table with the summary of the best 25 episodes of Simpsons presented at [these web page](https://www.pastemagazine.com/articles/2014/05/the-top-25-simpsons-episodes-of-all-time.html)
 
 
 ```{r construct a data frame}
@@ -56,29 +59,32 @@ titles <- read_html("https://www.pastemagazine.com/articles/2014/05/the-top-25-s
   html_text()
 
 to_search <- paste0("p:nth-child(",c(seq(3,13,by=2),
-                                    seq(16,26,by=2),
-                                    seq(29,41,by=2),
-                                    seq(44,52,by=2),55),")")
+                                     seq(16,26,by=2),
+                                     seq(29,41,by=2),
+                                     seq(44,52,by=2),
+                                     55),
+                    ")")
 
 description <- read_html("https://www.pastemagazine.com/articles/2014/05/the-top-25-simpsons-episodes-of-all-time.html") %>% 
   html_nodes(toString(to_search)) %>% 
   html_text()
-  
-summary_table <- tibble(title=rev(titles),
+
+#To eliminate the numbers in titles of chapter I used "gsub"
+summary_table <- tibble(title=rev(gsub('[0-9]+. ', '', titles)),
                         description=rev(description))
 ```
 
-Again, we can show only few rows of the data frame we built, which also will be loaded in a xlsx file by the following code:
+Again, we can show only a few rows of the data frame we built, which also will be loaded in an xlsx file by the following code:
 
 ```{r showing data 2}
 summary_table %>% 
   head(5)
 
-write.xlsx(Simpson_characters[[1]],"Simpson_characters.xlsx")
+write.xlsx(summary_table[[1]],"Simpson_best_chapters.xlsx")
 ```
 
 
-Finally, we are going to make two different scraping to obtain "real-time" data. The first one is to obatin the most recent news published by **New York times** regarding three different fields: `world`, `politics` and `business`. To do it I created the following function, which input could be any of the preciuos mentioned fiels, being `world` the default value.
+Finally, we are going to make two different scraping to obtain "real-time" data. The first one is to obtain the most recent news published by **New York times** regarding three different fields: `world`, `politics` and `business`. To do it I created the following function, which input could be any of the previously mentioned fields, being `world` the default value.
 
 ```{r last_news function}
 last_news <- function(field="world"){
@@ -98,16 +104,15 @@ last_news <- function(field="world"){
 }
 ```
 
-To illustrate the usege and output of this function:
+To illustrate the usage and output of this function:
 
 ```{r using last_news}
 last_news("business")
 ```
 
-**Note:** If the css style change in [the New York times page](https://www.nytimes.com) this function could not work properly.
+**Note:** If the css style change in [the New York times page](https://www.nytimes.com) this function won't work properly.
 
-Other example is given bu the following function which provides the current weather of Vancouver at the moment is called, this function doesn't need any parameter to be passed.
-
+Another example is given by the following function which provides the current weather of Vancouver at the moment is called, this function doesn't need any parameter to be passed.
 
 ```{r vancouver_weather function}
 vancouver_weather <- function(){
@@ -126,15 +131,88 @@ vancouver_weather()
 ```
 
 ## Make API queries
-Make two requests for data two make two data objects.
+> Make two requests for data two make two data objects.
 
-Requirements:
+> Requirements:
 
-  - At least one of your data objects should be a data frame that contains at least 2 rows and 2 columns, and this should not be obtained from the GitHub API or the OMDb API that we used in class.
+>  - At least one of your data objects should be a data frame that contains at least 2 rows and 2 columns, and this should not be obtained from the GitHub API or the OMDb API that we used in class.
   - Use the httr package to do the retrieval (or even the RCurl package if you’d like).
   - Don’t use R packages that are specifically designed to wrap a specific API (such as rebird or geonames, as listed in the cm112 notes).
     + You can use these, but not until you’ve completed the original task.
     + You can use the API’s associated with these, though.
 
+For this exercises, I'm going to use the API provided by [potterapi](https://www.potterapi.com/) which contains information about different characters, schools, and spells of Harry Potter saga. This site requires you to generate an API key, which won't be published on this file.
 
+The following request doesn't work unless an API key is provided, because of that, I provide a csv file with the content I obtained using my API key:
+
+```{r first_query_API , eval=FALSE}
+#To run this code, replace "my_api_key" with a valid API key
+my_apy_key <- "Insert your API key here"
+query_students <- paste0("https://www.potterapi.com/v1/characters/?key=",
+                         my_apy_key,
+                         "&house=Gryffindor")
+
+Gryffindor_students <- fromJSON(query_students)
+write.csv(Gryffindor_students,"Gryffindor_students.csv")
+```
+
+Result was a data frame of 41 observations and 17 variables that was loaded in the file `Gryffindor_students.csv`. In order to show this data, I'm going to display part of this data frame:
+
+```{r showing results API 1}
+read_Gryffindor_students <- read.csv("Gryffindor_students.csv")
+
+read_Gryffindor_students %>% 
+  str()
+
+read_Gryffindor_students %>% 
+  head(3)
+```
+
+We can also make some plots with information provided by this API:
+
+```{r showing graph API 1}
+read_Gryffindor_students %>% 
+  ggplot(aes(bloodStatus,1,fill=bloodStatus)) +
+  geom_bar(stat = "identity") +
+  ggtitle("Counts by blood Status on Gryffindor") +
+  ylab("Counts")
+```
+
+We can use the package `httr` to make a **GET** call and obtain the spells provided by this API
+
+```{r second_query_API, eval=FALSE}
+query_spells <- paste0("https://www.potterapi.com/v1/spells/?key=",
+                       my_apy_key)
+  
+spells <- GET(query_spells)
+content(spells)
+```
+
+The data was obtained in `list` format, thus is going to be converted to a data frame and saved as csv file in the following lines:
+
+```{r savind_data, eval=FALSE}
+spells_df <- data.frame(id =sapply(content(spells),function(i){i[[1]]}),
+                        spell=sapply(content(spells),function(i){i[[2]]}),
+                        type=sapply(content(spells),function(i){i[[3]]}),
+                        effect=sapply(content(spells),function(i){i[[4]]}),
+                        row.names = NULL )
+write.csv(spells_df,"spells.csv")
+```
+
+Some of these results are displayed to show the obtained data:
+
+```{r showing_spelss_data}
+read_spells <- read.csv("spells.csv") 
+
+read_spells %>% 
+  head(8)
+```
+
+Furthermore, it is possible to show this data in JSON format, which is the original format we obtained using the command `toJson`
+
+```{r convert_to_JSON}
+read_spells[,-1] %>% 
+  head(3) %>% 
+  toJSON()
+```
 

@@ -1,0 +1,42 @@
+"","_id","name","role","house","school","boggart","__v","ministryOfMagic","orderOfThePhoenix","dumbledoresArmy","deathEater","bloodStatus","species","alias","animagus","patronus","wand"
+"1","5a0fa648ae5bc100213c2332","Katie Bell","student","Gryffindor","Hogwarts School of Witchcraft and Wizardry","Lord Voldemort",0,FALSE,FALSE,FALSE,FALSE,"pure-blood","human",NA,NA,NA,NA
+"2","5a0fa67dae5bc100213c2333","Cuthbert Binns","Professor, History of Magic","Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,FALSE,FALSE,FALSE,"unknown","ghost",NA,NA,NA,NA
+"3","5a0fa7dcae5bc100213c2338","Sirius Black",NA,"Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,TRUE,FALSE,FALSE,"pure-blood","human","Padfoot","black dog",NA,NA
+"4","5a107e1ae0686c0021283b19","Lavender Brown","student","Gryffindor","Hogwarts School of Witchcraft and Wizardry","rat",0,FALSE,FALSE,TRUE,FALSE,"pure-blood","human",NA,NA,NA,NA
+"5","5a10944f3dc2080021cd8755","Colin Creevey","Student","Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,FALSE,TRUE,FALSE,"muggle-born","human",NA,NA,NA,NA
+"6","5a10947c3dc2080021cd8756","Dennis Creevey","Student","Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,FALSE,TRUE,FALSE,"muggle-born","human",NA,NA,NA,NA
+"7","5a1096b33dc2080021cd8762","Aberforth Dumbledore","Owner, Hog's Head Inn","Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,TRUE,FALSE,FALSE,"half-blood","human","Ab",NA,"goat",NA
+"8","5a1097653dc2080021cd8763","Albus Dumbledore","Headmaster, Hogwarts","Gryffindor","Hogwarts School of Witchcraft and Wizardry","Ariana (sister)",0,TRUE,TRUE,FALSE,FALSE,"half-blood","human",NA,NA,"phoenix","Elder, 15"", thestral tail hair"
+"9","5a1098fd3dc2080021cd876e","Seamus Finnigan","student","Gryffindor","Hogwarts School of Witchcraft and Wizardry","banshee",0,FALSE,FALSE,TRUE,FALSE,"half-blood","human",NA,NA,NA,NA
+"10","5a109af13dc2080021cd877a","Hermione Granger","student","Gryffindor","Hogwarts School of Witchcraft and Wizardry","failure",0,FALSE,TRUE,TRUE,FALSE,"muggle-born","human",NA,NA,"otter","Vine wood, 10 3/4"", dragon heartstring"
+"11","5a109bfc3dc2080021cd877f","Godric Gryffindor","Founder, Hogwarts","Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,FALSE,FALSE,FALSE,"unknown","human",NA,NA,NA,NA
+"12","5a109c3d3dc2080021cd8780","Rubeus Hagrid","Groundkeeper, Professor, Care of Magical Creatures","Gryffindor","Hogwarts School of Witchcraft and Wizardry","Lord Voldemort",0,FALSE,TRUE,FALSE,FALSE,"unknown","half-giant",NA,NA,NA,"Oak, 16"", unknown core"
+"13","5a109cb83dc2080021cd8784","Angelina Johnson","student","Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,FALSE,TRUE,FALSE,"unknown","human",NA,NA,NA,NA
+"14","5a109cd33dc2080021cd8785","Lee Jordan","student","Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,FALSE,TRUE,FALSE,"unknown","human","River",NA,NA,NA
+"15","5a109e143dc2080021cd878d","Alice Longbottom","Auror (formerly)","Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,TRUE,FALSE,FALSE,"pure-blood","human",NA,NA,NA,NA
+"16","5a109e1e3dc2080021cd878e","Frank Longbottom","Auror (formerly)","Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,TRUE,FALSE,FALSE,"pure-blood","human",NA,NA,NA,NA
+"17","5a109e253dc2080021cd878f","Augusta Longbottom",NA,"Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,TRUE,FALSE,FALSE,"pure-blood","human",NA,NA,NA,NA
+"18","5a109e543dc2080021cd8790","Neville Longbottom","student","Gryffindor","Hogwarts School of Witchcraft and Wizardry","Severus Snape",0,FALSE,FALSE,TRUE,FALSE,"pure-blood","human",NA,NA,NA,"Cherry, 13"", unicorn hair"
+"19","5a109f053dc2080021cd8793","Remus Lupin","Professor, Defence Against the Dark Arts","Gryffindor","Hogwarts School of Witchcraft and Wizardry","full moon",0,FALSE,TRUE,FALSE,FALSE,"half-blood","werewolf","Moony",NA,"wolf","Cypress, 10 1/4"", unicorn hair"
+"20","5a1223ed0f5ae10021650d70","Minerva McGonagall","Professor, Transfiguration","Gryffindor","Hogwarts School of Witchcraft and Wizardry","Lord Voldemort",0,TRUE,TRUE,FALSE,FALSE,"half-blood","human",NA,"tabby cat","cat","Fir, 9 1/2"", dragon heartstring"
+"21","5a1226520f5ae10021650d76","Parvati Patil","student","Gryffindor","Hogwarts School of Witchcraft and Wizardry","mummy",0,FALSE,FALSE,TRUE,FALSE,"unknown","human",NA,NA,NA,NA
+"22","5a1226d70f5ae10021650d77","Peter Pettigrew",NA,"Gryffindor","Hogwarts School of Witchcraft and Wizardry","Lord Voldemort",0,FALSE,FALSE,FALSE,TRUE,"unknown","human","Wormtail","rat",NA,"Chestnut, 9 1/4, dragon heartstring"
+"23","5a12292a0f5ae10021650d7e","Harry Potter","student","Gryffindor","Hogwarts School of Witchcraft and Wizardry","dementor",0,FALSE,TRUE,TRUE,FALSE,"half-blood","human","The Boy Who Lived",NA,"stag","Holly, 11"", phoenix feather"
+"24","5a12298d0f5ae10021650d7f","James Potter I",NA,"Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,TRUE,FALSE,FALSE,"pure-blood","human","Prongs","stag","stag","Mahogany, 11"", unknown core"
+"25","5a1229e10f5ae10021650d80","Lily J. Potter",NA,"Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,TRUE,FALSE,FALSE,"muggle-born","human",NA,NA,"doe","Willow, 10 1/4"", unknown core"
+"26","5a122cbe0f5ae10021650d89","Demelza Robins",NA,"Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,FALSE,FALSE,FALSE,"unknown","human",NA,NA,NA,NA
+"27","5a1233ff0f5ae10021650d98","Alicia Spinnet","student","Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,FALSE,TRUE,FALSE,"unknown","human",NA,NA,NA,NA
+"28","5a1234cb0f5ae10021650d9b","Dean Thomas","student","Gryffindor","Hogwarts School of Witchcraft and Wizardry","severed hand walking on it's own",0,FALSE,FALSE,TRUE,FALSE,"half-blood","human",NA,NA,NA,NA
+"29","5a1237480f5ae10021650da3","Romilda Vane",NA,"Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,FALSE,TRUE,FALSE,"unknown","human",NA,NA,NA,NA
+"30","5a1237c00f5ae10021650da5","Arthur Weasley","Head, Misuse of Muggle Artifacts ","Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,TRUE,TRUE,FALSE,FALSE,"pure-blood","human",NA,NA,"weasel",NA
+"31","5a1238070f5ae10021650da6","William Weasley","Curse Breaker, Gringotts Bank","Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,TRUE,FALSE,FALSE,"pure-blood","human","Bill",NA,NA,NA
+"32","5a1238350f5ae10021650da7","Charles Weasley","Dragonologist","Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,TRUE,FALSE,FALSE,"pure-blood","human","Charlie",NA,NA,"Ash, 12"", unicorn hair tail"
+"33","5a12387a0f5ae10021650da8","Fred Weasley","co-owner of Weasleys' Wizard Wheezes","Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,TRUE,FALSE,FALSE,"pure-blood","human",NA,NA,NA,NA
+"34","5a1238b20f5ae10021650da9","George Weasley","co-owner of Weasleys' Wizard Wheezes","Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,TRUE,FALSE,FALSE,"pure-blood","human",NA,NA,NA,NA
+"35","5a1239130f5ae10021650daa","Ginevra Weasley","student","Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,TRUE,TRUE,FALSE,"pure-blood","human","Ginny",NA,"horse",NA
+"36","5a12393d0f5ae10021650dab","Molly Weasley","student","Gryffindor","Hogwarts School of Witchcraft and Wizardry","corpses of her family",0,FALSE,TRUE,FALSE,FALSE,"pure-blood","human",NA,NA,NA,NA
+"37","5a12395f0f5ae10021650dac","Percy Weasley","student","Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,FALSE,FALSE,FALSE,"pure-blood","human",NA,NA,NA,NA
+"38","5a1239c80f5ae10021650dad","Ronald Weasley","student","Gryffindor","Hogwarts School of Witchcraft and Wizardry","Aragog",0,FALSE,TRUE,TRUE,FALSE,"pure-blood","human","Ron",NA,"jack russell terrier","Willow, 14"", unicorn hair tail"
+"39","5a1239f10f5ae10021650dae","Oliver Wood","student","Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,FALSE,FALSE,FALSE,"unknown","human",NA,NA,NA,NA
+"40","5a123b450f5ae10021650db7","Cadogan","Gryffindor Tower Door Guard","Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,FALSE,FALSE,FALSE,"pure-blood","human",NA,NA,NA,NA
+"41","5a123f130f5ae10021650dcc","Nicholas de Mimsy-Porpington","Gryffindor House Ghost","Gryffindor","Hogwarts School of Witchcraft and Wizardry",NA,0,FALSE,FALSE,FALSE,FALSE,"unknown","ghost","Nearly Headless Nick",NA,NA,NA
