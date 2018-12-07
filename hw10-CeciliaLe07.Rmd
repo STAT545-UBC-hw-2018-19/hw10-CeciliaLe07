@@ -12,7 +12,6 @@ All dependencies nedeed for this assignment:
 ```{r}
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(rvest))
-suppressPackageStartupMessages(library(xlsx))
 suppressPackageStartupMessages(library(kableExtra))
 suppressPackageStartupMessages(library(jsonlite))
 suppressPackageStartupMessages(library(httr))
@@ -40,14 +39,14 @@ Simpson_characters <- read_html("https://en.wikipedia.org/wiki/List_of_The_Simps
   html_table(fill=TRUE)
 ```
 
-After that, we can show only a few rows of the obtained object, which also will be saved in an xlsx file by the following code:
+After that, we can show only a few rows of the obtained object, which also will be saved in an csv file by the following code:
 
 ```{r showing data 1}
 #Printing the first 5 entries of the table
 Simpson_characters[[1]] %>% 
   head(3)
 
-write.xlsx(Simpson_characters[[1]],"Simpson_characters.xlsx")
+write.csv(Simpson_characters[[1]],"Simpson_characters.csv")
 ```
 
 Furthermore, we can construct a data frame when scraped data is not in table format. For instance, we can construct a table with the summary of the best 25 episodes of Simpsons presented at [these web page](https://www.pastemagazine.com/articles/2014/05/the-top-25-simpsons-episodes-of-all-time.html)
@@ -74,13 +73,13 @@ summary_table <- tibble(title=rev(gsub('[0-9]+. ', '', titles)),
                         description=rev(description))
 ```
 
-Again, we can show only a few rows of the data frame we built, which also will be loaded in an xlsx file by the following code:
+Again, we can show only a few rows of the data frame we built, which also will be loaded in an csv file by the following code:
 
 ```{r showing data 2}
 summary_table %>% 
   head(5)
 
-write.xlsx(summary_table[[1]],"Simpson_best_chapters.xlsx")
+write.csv(summary_table[[1]],"Simpson_best_chapters.csv")
 ```
 
 

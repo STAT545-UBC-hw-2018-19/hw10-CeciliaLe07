@@ -10,7 +10,6 @@ All dependencies nedeed for this assignment:
 ``` r
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(rvest))
-suppressPackageStartupMessages(library(xlsx))
 suppressPackageStartupMessages(library(kableExtra))
 suppressPackageStartupMessages(library(jsonlite))
 suppressPackageStartupMessages(library(httr))
@@ -35,7 +34,7 @@ Simpson_characters <- read_html("https://en.wikipedia.org/wiki/List_of_The_Simps
   html_table(fill=TRUE)
 ```
 
-After that, we can show only a few rows of the obtained object, which also will be saved in an xlsx file by the following code:
+After that, we can show only a few rows of the obtained object, which also will be saved in an csv file by the following code:
 
 ``` r
 #Printing the first 5 entries of the table
@@ -57,7 +56,7 @@ Simpson_characters[[1]] %>%
     ## 3 "Good Night (The Simpsons short)"[3]        1987-04-19
 
 ``` r
-write.xlsx(Simpson_characters[[1]],"Simpson_characters.xlsx")
+write.csv(Simpson_characters[[1]],"Simpson_characters.csv")
 ```
 
 Furthermore, we can construct a data frame when scraped data is not in table format. For instance, we can construct a table with the summary of the best 25 episodes of Simpsons presented at [these web page](https://www.pastemagazine.com/articles/2014/05/the-top-25-simpsons-episodes-of-all-time.html)
@@ -83,7 +82,7 @@ summary_table <- tibble(title=rev(gsub('[0-9]+. ', '', titles)),
                         description=rev(description))
 ```
 
-Again, we can show only a few rows of the data frame we built, which also will be loaded in an xlsx file by the following code:
+Again, we can show only a few rows of the data frame we built, which also will be loaded in an csv file by the following code:
 
 ``` r
 summary_table %>% 
@@ -100,7 +99,7 @@ summary_table %>%
     ## 5 Bart’s Inner Child      George Meyer may be a comedy writing legend, bu~
 
 ``` r
-write.xlsx(summary_table[[1]],"Simpson_best_chapters.xlsx")
+write.csv(summary_table[[1]],"Simpson_best_chapters.csv")
 ```
 
 Finally, we are going to make two different scraping to obtain "real-time" data. The first one is to obtain the most recent news published by **New York times** regarding three different fields: `world`, `politics` and `business`. To do it I created the following function, which input could be any of the previously mentioned fields, being `world` the default value.
@@ -230,7 +229,7 @@ For this exercises, I'm going to use the API provided by [potterapi](https://www
 The following request doesn't work unless an API key is provided, because of that, I provide a csv file with the content I obtained using my API key:
 
 ``` r
-#To run this code, replace "myapikey" with a valid API key
+#To run this code, replace "my_api_key" with a valid API key
 my_apy_key <- "Insert your API key here"
 query_students <- paste0("https://www.potterapi.com/v1/characters/?key=",
                          my_apy_key,
