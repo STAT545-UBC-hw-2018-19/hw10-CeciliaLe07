@@ -15,7 +15,7 @@ Thanks to the following pages for share the information which is presented in th
   + [Wikipedia](https://en.wikipedia.org/wiki/List_of_The_Simpsons_characters)
   + [pastemagazine](https://www.pastemagazine.com/articles/2014/05/the-top-25-simpsons-episodes-of-all-time.html)
   + [New York Times](https://www.nytimes.com)
-  + [accuweather]("https://www.accuweather.com/en/ca/vancouver/v6c/hourly-weather-forecast/5328)
+  + [accuweather](https://www.accuweather.com/en/ca/vancouver/v6c/hourly-weather-forecast/5328)
   + [potterapi](https://www.potterapi.com/)
 
 ### Repository Content
